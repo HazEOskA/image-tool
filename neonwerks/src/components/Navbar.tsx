@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const LINKS = [
-  { label: 'Process', href: '#process' },
+  { label: 'Overview', href: '#explanation' },
   { label: 'Tools', href: '#tools' },
   { label: 'Live Demo', href: '#showcase' },
 ];
@@ -50,7 +50,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#showcase"
+            href="#launch"
             className="rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple px-5 py-2 text-sm font-semibold text-ink-950 shadow-glow transition-transform hover:scale-105"
           >
             Launch App
@@ -90,7 +90,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#showcase"
+              href="#launch"
               onClick={() => setOpen(false)}
               className="mt-1 rounded-lg bg-gradient-to-r from-neon-cyan to-neon-purple px-3 py-2.5 text-center text-sm font-semibold text-ink-950"
             >

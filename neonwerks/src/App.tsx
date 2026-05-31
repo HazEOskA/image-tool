@@ -1,7 +1,9 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import HowItWorks from './components/HowItWorks';
 import PipelineGrid from './components/PipelineGrid';
 import LiveShowcase from './components/showcase/LiveShowcase';
+import LaunchCTA from './components/LaunchCTA';
 
 export default function App() {
   return (
@@ -9,8 +11,10 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <HowItWorks />
         <PipelineGrid />
         <LiveShowcase />
+        <LaunchCTA />
       </main>
       <Footer />
     </div>
