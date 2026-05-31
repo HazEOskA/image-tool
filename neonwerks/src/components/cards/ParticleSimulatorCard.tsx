@@ -2,6 +2,7 @@ import { useMemo, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import CardShell from '../ui/CardShell';
+import { useLang } from '../../i18n';
 
 const COUNT = 3400;
 
@@ -145,13 +146,15 @@ function ParticleField() {
 }
 
 export default function ParticleSimulatorCard() {
+  const { t } = useLang();
+  const c = t.pipeline.cards.particles;
   return (
     <CardShell
       index="04"
       title="AI PARTICLE SIMULATOR"
-      concept="Particle Emitter"
+      concept={c.concept}
       accent="#ff5ed3"
-      tags={['3,400 points', 'Repulsion field', 'Additive glow']}
+      tags={[...c.tags]}
     >
       <div className="h-56 w-full">
         <Canvas

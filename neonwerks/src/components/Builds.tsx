@@ -1,13 +1,6 @@
 import { motion } from 'framer-motion';
-import type { ReactNode } from 'react';
 import SectionHeading from './ui/SectionHeading';
-
-interface Build {
-  title: string;
-  body: string;
-  accent: string;
-  icon: ReactNode;
-}
+import { useLang } from '../i18n';
 
 /* Minimal inline icon set — no new dependency. */
 const I = {
@@ -45,84 +38,64 @@ const I = {
   ),
 };
 
-const BUILDS: Build[] = [
-  {
-    title: 'Animated Landing Page',
-    body: 'A premium launch page for products, portfolios and creators — a first impression that lands and stays.',
-    accent: '#34e2ff',
-    icon: I.rocket,
-  },
-  {
-    title: 'Interactive Product Demo',
-    body: 'Turn your product or workflow into a visual, explorable demo that sells it better than any video.',
-    accent: '#4f8bff',
-    icon: I.cursor,
-  },
-  {
-    title: 'AI / SaaS Launch Page',
-    body: 'Make complex software feel clear and trustworthy, with motion that guides attention to what matters.',
-    accent: '#9b6bff',
-    icon: I.spark,
-  },
-  {
-    title: 'Web3 Visual Experience',
-    body: 'Futuristic launch pages, token dashboards and ecosystem explainers that actually earn attention.',
-    accent: '#c66bff',
-    icon: I.hex,
-  },
-  {
-    title: 'Creator / Music Portfolio',
-    body: 'A cinematic personal site for artists, producers and creative brands — built to be felt, not skimmed.',
-    accent: '#ff5ed3',
-    icon: I.wave,
-  },
+/* Design tokens — kept out of the copy file because they're not translatable. */
+const BUILD_VISUALS = [
+  { accent: '#34e2ff', icon: I.rocket },
+  { accent: '#4f8bff', icon: I.cursor },
+  { accent: '#9b6bff', icon: I.spark },
+  { accent: '#c66bff', icon: I.hex },
+  { accent: '#ff5ed3', icon: I.wave },
 ];
 
 export default function Builds() {
+  const { t } = useLang();
   return (
     <section id="builds" className="relative mx-auto max-w-7xl px-6 py-24">
       <div className="mb-14 flex flex-col items-center">
         <SectionHeading
-          eyebrow="What we build"
-          title="What You Can Build With NEONWERKS"
-          description="Whatever you're launching, NEONWERKS can turn it into a premium interactive experience. These are five of the things we build most — find the closest fit to what you need."
+          eyebrow={t.builds.eyebrow}
+          title={t.builds.title}
+          description={t.builds.description}
         />
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {BUILDS.map((b, i) => (
-          <motion.article
-            key={b.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.21, 0.6, 0.35, 1] }}
-            whileHover={{ y: -4 }}
-            className="group relative flex flex-col overflow-hidden rounded-2xl glass p-6 shadow-card"
-            style={{ ['--accent' as string]: b.accent }}
-          >
-            <div
-              className="pointer-events-none absolute inset-x-6 top-0 h-px opacity-70"
-              style={{ background: `linear-gradient(90deg, transparent, ${b.accent}, transparent)` }}
-            />
-            <div
-              className="pointer-events-none absolute -bottom-20 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
-              style={{ background: b.accent }}
-            />
+        {t.builds.items.map((b, i) => {
+          const v = BUILD_VISUALS[i] ?? BUILD_VISUALS[0];
+          return (
+            <motion.article
+              key={b.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: [0.21, 0.6, 0.35, 1] }}
+              whileHover={{ y: -4 }}
+              className="group relative flex flex-col overflow-hidden rounded-2xl glass p-6 shadow-card"
+              style={{ ['--accent' as string]: v.accent }}
+            >
+              <div
+                className="pointer-events-none absolute inset-x-6 top-0 h-px opacity-70"
+                style={{ background: `linear-gradient(90deg, transparent, ${v.accent}, transparent)` }}
+              />
+              <div
+                className="pointer-events-none absolute -bottom-20 left-1/2 h-32 w-32 -translate-x-1/2 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
+                style={{ background: v.accent }}
+              />
 
-            <div className="relative z-10 flex items-start gap-3">
-              <span
-                className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border bg-ink-950/60"
-                style={{ borderColor: b.accent, color: b.accent }}
-              >
-                <span className="block h-5 w-5">{b.icon}</span>
-              </span>
-              <h3 className="pt-1.5 text-base font-bold text-white sm:text-lg">{b.title}</h3>
-            </div>
+              <div className="relative z-10 flex items-start gap-3">
+                <span
+                  className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border bg-ink-950/60"
+                  style={{ borderColor: v.accent, color: v.accent }}
+                >
+                  <span className="block h-5 w-5">{v.icon}</span>
+                </span>
+                <h3 className="pt-1.5 text-base font-bold text-white sm:text-lg">{b.title}</h3>
+              </div>
 
-            <p className="relative z-10 mt-3 text-sm leading-relaxed text-white/55">{b.body}</p>
-          </motion.article>
-        ))}
+              <p className="relative z-10 mt-3 text-sm leading-relaxed text-white/55">{b.body}</p>
+            </motion.article>
+          );
+        })}
       </div>
 
       <div className="mt-12 flex justify-center">
@@ -130,7 +103,7 @@ export default function Builds() {
           href="#tools"
           className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.035] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/[0.07]"
         >
-          Explore the pipeline
+          {t.builds.cta}
           <span
             aria-hidden
             className="inline-block translate-x-0 text-neon-cyan transition-transform duration-300 group-hover:translate-x-1"

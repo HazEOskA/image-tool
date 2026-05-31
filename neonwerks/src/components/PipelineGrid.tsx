@@ -5,6 +5,7 @@ import StringTuneCard from './cards/StringTuneCard';
 import AstroditherCard from './cards/AstroditherCard';
 import SmoothieCard from './cards/SmoothieCard';
 import ParticleSimulatorCard from './cards/ParticleSimulatorCard';
+import { useLang } from '../i18n';
 
 export default function PipelineGrid() {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -13,14 +14,15 @@ export default function PipelineGrid() {
   const c2 = useRef<HTMLDivElement>(null);
   const c3 = useRef<HTMLDivElement>(null);
   const itemRefs = [c0, c1, c2, c3];
+  const { t } = useLang();
 
   return (
     <section id="tools" className="relative mx-auto max-w-7xl px-6 py-24">
       <div id="process" className="mb-14 flex flex-col items-center">
         <SectionHeading
-          eyebrow="The Pipeline"
-          title="Four Tools. One Workflow."
-          description="Each module is a live WebGL simulation. Hover any card to interact — typography tunes to your cursor, shaders dither in real time, the fluid blob chases your pointer, and particles scatter on contact."
+          eyebrow={t.pipeline.eyebrow}
+          title={t.pipeline.title}
+          description={t.pipeline.description}
         />
       </div>
 

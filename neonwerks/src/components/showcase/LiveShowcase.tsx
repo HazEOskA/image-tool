@@ -2,15 +2,17 @@ import { motion } from 'framer-motion';
 import SectionHeading from '../ui/SectionHeading';
 import LaptopFrame from './LaptopFrame';
 import LiveCanvas from './LiveCanvas';
+import { useLang } from '../../i18n';
 
 export default function LiveShowcase() {
+  const { t } = useLang();
   return (
     <section id="showcase" className="relative mx-auto max-w-7xl px-6 py-24">
       <div className="mb-16 flex flex-col items-center">
         <SectionHeading
-          eyebrow="Live Showcase"
-          title="All Four Tools, One Surface"
-          description="The complete pipeline rendered live — a fluid 3D object from Smoothie, dithered shapes from Astrodither, kinetic particle streams from the Simulator, and typography tuned by String Tune. Move your cursor over the screen to interact."
+          eyebrow={t.showcase.eyebrow}
+          title={t.showcase.title}
+          description={t.showcase.description}
         />
       </div>
 
@@ -31,11 +33,7 @@ export default function LiveShowcase() {
 
       {/* feature strip */}
       <div className="mt-20 grid grid-cols-1 gap-6 sm:grid-cols-3">
-        {[
-          ['Performance-first', 'rAF-driven loops & useRef mutation keep React out of the render path — steady 60 FPS.'],
-          ['Fully responsive', 'Adaptive DPR, fluid grids and live-measured connectors from mobile to ultrawide.'],
-          ['Production GLSL', 'Hand-written simplex noise, Bayer dithering and additive particle shaders — no placeholders.'],
-        ].map(([title, body], i) => (
+        {t.showcase.features.map(([title, body], i) => (
           <motion.div
             key={title}
             initial={{ opacity: 0, y: 24 }}

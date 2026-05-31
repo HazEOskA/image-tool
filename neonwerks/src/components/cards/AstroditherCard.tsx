@@ -3,6 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import CardShell from '../ui/CardShell';
 import { ditherFragment, ditherVertex } from '../../shaders/dither.glsl';
+import { useLang } from '../../i18n';
 
 function makeDitherMaterial() {
   return new THREE.ShaderMaterial({
@@ -78,13 +79,15 @@ function DitherScene() {
 }
 
 export default function AstroditherCard() {
+  const { t } = useLang();
+  const c = t.pipeline.cards.astrodither;
   return (
     <CardShell
       index="02"
       title="ASTRODITHER"
-      concept="Dither Shader"
+      concept={c.concept}
       accent="#9b6bff"
-      tags={['GLSL', 'Bayer 4×4', 'Low-poly']}
+      tags={[...c.tags]}
     >
       <div className="h-56 w-full">
         <Canvas

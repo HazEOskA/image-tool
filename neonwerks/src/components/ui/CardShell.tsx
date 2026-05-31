@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
+import { useLang } from '../../i18n';
 
 interface Props {
   index: string;
@@ -15,6 +16,7 @@ interface Props {
  * simulation is passed as children and rendered inside a clipped viewport.
  */
 export default function CardShell({ index, title, concept, accent, tags, children }: Props) {
+  const { t } = useLang();
   return (
     <motion.article
       initial={{ opacity: 0, y: 40 }}
@@ -57,7 +59,7 @@ export default function CardShell({ index, title, concept, accent, tags, childre
       <div className="relative mx-5 mb-4 flex-1 overflow-hidden rounded-2xl border border-white/5 bg-ink-950/50">
         {children}
         <div className="pointer-events-none absolute bottom-2 right-3 font-mono text-[10px] uppercase tracking-widest text-white/30">
-          live · interactive
+          {t.pipeline.liveTag}
         </div>
       </div>
 

@@ -3,6 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import CardShell from '../ui/CardShell';
 import { blobFragment, blobVertex } from '../../shaders/blob.glsl';
+import { useLang } from '../../i18n';
 
 function Blob() {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -59,13 +60,15 @@ function Blob() {
 }
 
 export default function SmoothieCard() {
+  const { t } = useLang();
+  const c = t.pipeline.cards.smoothie;
   return (
     <CardShell
       index="03"
       title="SMOOTHIE"
-      concept="Fluid Interpolation"
+      concept={c.concept}
       accent="#4f8bff"
-      tags={['Lerp damping', 'Simplex noise', 'Morphing mesh']}
+      tags={[...c.tags]}
     >
       <div className="h-56 w-full">
         <Canvas

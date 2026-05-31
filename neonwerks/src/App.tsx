@@ -5,6 +5,7 @@ import Builds from './components/Builds';
 import PipelineGrid from './components/PipelineGrid';
 import LiveShowcase from './components/showcase/LiveShowcase';
 import LaunchCTA from './components/LaunchCTA';
+import { useLang } from './i18n';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
 }
 
 function Footer() {
+  const { t } = useLang();
   return (
     <footer className="border-t border-white/10 px-6 py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 sm:flex-row">
@@ -33,21 +35,17 @@ function Footer() {
           </span>
           <div>
             <p className="text-sm font-extrabold tracking-[0.2em] text-white">NEONWERKS</p>
-            <p className="font-mono text-[11px] text-white/40">Premium Motion Web Design</p>
+            <p className="font-mono text-[11px] text-white/40">{t.footer.tagline}</p>
           </div>
         </div>
         <div className="flex flex-col items-center gap-1 text-center">
-          <p className="text-xs text-white/55">
-            Available for custom motion builds, interactive demos &amp; web experiments.
-          </p>
-          <p className="font-mono text-[11px] text-white/35">
-            Crafted with React · Three.js · Framer Motion · Tailwind
-          </p>
+          <p className="text-xs text-white/55">{t.footer.availability}</p>
+          <p className="font-mono text-[11px] text-white/35">{t.footer.stack}</p>
         </div>
         <div className="flex gap-5 text-sm text-white/55">
-          <a href="#tools" className="transition-colors hover:text-white">Tools</a>
-          <a href="#showcase" className="transition-colors hover:text-white">Demo</a>
-          <a href="#top" className="transition-colors hover:text-white">Top</a>
+          <a href="#tools" className="transition-colors hover:text-white">{t.footer.links.tools}</a>
+          <a href="#showcase" className="transition-colors hover:text-white">{t.footer.links.demo}</a>
+          <a href="#top" className="transition-colors hover:text-white">{t.footer.links.top}</a>
         </div>
       </div>
     </footer>

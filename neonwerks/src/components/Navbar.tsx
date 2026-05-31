@@ -1,16 +1,12 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-
-const LINKS = [
-  { label: 'Overview', href: '#explanation' },
-  { label: 'Builds', href: '#builds' },
-  { label: 'Tools', href: '#tools' },
-  { label: 'Live Demo', href: '#showcase' },
-];
+import { useLang } from '../i18n';
+import type { Lang } from '../content/copy';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { lang, setLang, t } = useLang();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -18,6 +14,13 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const links = [
+    { label: t.nav.overview, href: '#explanation' },
+    { label: t.nav.builds, href: '#builds' },
+    { label: t.nav.tools, href: '#tools' },
+    { label: t.nav.demo, href: '#showcase' },
+  ];
 
   return (
     <motion.header
@@ -40,8 +43,8 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-6 md:flex lg:gap-8">
-          {LINKS.map((l) => (
+        <div className="hidden items-center gap-5 md:flex lg:gap-7">
+          {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
@@ -50,11 +53,12 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <LangToggle lang={lang} setLang={setLang} ariaLabel={t.nav.toggleAria} />
           <a
             href="#launch"
             className="rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple px-5 py-2 text-sm font-semibold text-ink-950 shadow-glow transition-transform hover:scale-105"
           >
-            Launch App
+            {t.nav.launch}
           </a>
         </div>
 
@@ -80,7 +84,7 @@ export default function Navbar() {
           className="absolute top-20 w-[calc(100%-2rem)] max-w-6xl rounded-2xl glass-strong p-4 md:hidden"
         >
           <div className="flex flex-col gap-1">
-            {LINKS.map((l) => (
+            {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
@@ -90,16 +94,62 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
+            <div className="mt-2 flex items-center justify-between rounded-lg border border-white/10 px-3 py-2">
+              <span className="font-mono text-[11px] uppercase tracking-widest text-white/45">
+                {t.nav.toggleAria}
+              </span>
+              <LangToggle lang={lang} setLang={setLang} ariaLabel={t.nav.toggleAria} />
+            </div>
             <a
               href="#launch"
               onClick={() => setOpen(false)}
               className="mt-1 rounded-lg bg-gradient-to-r from-neon-cyan to-neon-purple px-3 py-2.5 text-center text-sm font-semibold text-ink-950"
             >
-              Launch App
+              {t.nav.launch}
             </a>
           </div>
         </motion.div>
       )}
     </motion.header>
+  );
+}
+
+/* Compact EN | PL pill. Active language pops in white; inactive sits muted. */
+function LangToggle({
+  lang,
+  setLang,
+  ariaLabel,
+}: {
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  ariaLabel: string;
+}) {
+  const base =
+    'h-7 rounded-full px-2.5 font-mono text-[11px] font-bold tracking-wider transition-colors';
+  const active = 'bg-white text-ink-950';
+  const idle = 'text-white/55 hover:text-white';
+  return (
+    <div
+      role="group"
+      aria-label={ariaLabel}
+      className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-0.5"
+    >
+      <button
+        type="button"
+        aria-pressed={lang === 'en'}
+        onClick={() => setLang('en')}
+        className={`${base} ${lang === 'en' ? active : idle}`}
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        aria-pressed={lang === 'pl'}
+        onClick={() => setLang('pl')}
+        className={`${base} ${lang === 'pl' ? active : idle}`}
+      >
+        PL
+      </button>
+    </div>
   );
 }

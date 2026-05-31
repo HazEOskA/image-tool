@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
+import { useLang } from '../../i18n';
 
 /**
  * Pure CSS/SVG laptop mockup. The screen area renders `children` (the live
  * WebGL canvas) clipped to the bezel, with a layered UI/typography overlay.
  */
 export default function LaptopFrame({ children }: { children: ReactNode }) {
+  const { t } = useLang();
   return (
     <div className="mx-auto w-full max-w-5xl">
       {/* ----- Screen ----- */}
@@ -42,24 +44,23 @@ export default function LaptopFrame({ children }: { children: ReactNode }) {
             <div className="flex flex-1 items-center">
               <div className="max-w-md px-6 sm:px-10">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/70">
-                  <span className="h-1.5 w-1.5 rounded-full bg-neon-pink" /> Live · v2.0
+                  <span className="h-1.5 w-1.5 rounded-full bg-neon-pink" /> {t.laptop.badge}
                 </span>
                 <h3 className="mt-3 text-2xl font-extrabold leading-[1.05] sm:mt-4 sm:text-5xl">
-                  <span className="text-gradient-brand">Design</span>
+                  <span className="text-gradient-brand">{t.laptop.titleA}</span>
                   <br />
-                  <span className="text-white">in motion.</span>
+                  <span className="text-white">{t.laptop.titleB}</span>
                 </h3>
                 <div className="mt-3 h-1 w-28 rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple" />
                 <p className="mt-4 hidden max-w-xs text-xs leading-relaxed text-white/55 sm:block sm:text-sm">
-                  Typography, shaders, fluid 3D and particles — composed into one interactive surface that
-                  reacts to every cursor move.
+                  {t.laptop.body}
                 </p>
                 <div className="mt-4 flex gap-3 sm:mt-5">
                   <span className="rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple px-4 py-2 text-[11px] font-semibold text-ink-950 sm:text-xs">
-                    Launch demo
+                    {t.laptop.btnPrimary}
                   </span>
                   <span className="rounded-full border border-white/20 px-4 py-2 text-[11px] font-semibold text-white sm:text-xs">
-                    View code
+                    {t.laptop.btnSecondary}
                   </span>
                 </div>
               </div>
@@ -67,15 +68,10 @@ export default function LaptopFrame({ children }: { children: ReactNode }) {
 
             {/* bottom tool legend */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-white/10 bg-black/30 px-4 py-2.5 backdrop-blur-sm sm:gap-4 sm:px-6">
-              {[
-                ['String Tune', '#34e2ff'],
-                ['Astrodither', '#9b6bff'],
-                ['Smoothie', '#4f8bff'],
-                ['Particles', '#ff5ed3'],
-              ].map(([label, color]) => (
-                <div key={label} className="flex items-center gap-1.5">
+              {(['#34e2ff', '#9b6bff', '#4f8bff', '#ff5ed3'] as const).map((color, i) => (
+                <div key={color} className="flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full" style={{ background: color }} />
-                  <span className="text-[10px] text-white/60">{label}</span>
+                  <span className="text-[10px] text-white/60">{t.laptop.legend[i]}</span>
                 </div>
               ))}
             </div>

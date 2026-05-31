@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import CardShell from '../ui/CardShell';
 import { usePointer } from '../../hooks/useMousePosition';
+import { useLang } from '../../i18n';
 
 const W = 360;
 const H = 220;
@@ -16,6 +17,8 @@ const WORDS = 'STRING · TUNE · KINETIC · TYPE · ';
 export default function StringTuneCard() {
   const rootRef = useRef<HTMLDivElement>(null);
   const pointer = usePointer(rootRef);
+  const { t } = useLang();
+  const c = t.pipeline.cards.stringTune;
 
   const pathRefs = useRef<(SVGPathElement | null)[]>([]);
   const dotRef = useRef<SVGCircleElement | null>(null);
@@ -75,9 +78,9 @@ export default function StringTuneCard() {
     <CardShell
       index="01"
       title="STRING TUNE"
-      concept="Kinetic Typography"
+      concept={c.concept}
       accent="#34e2ff"
-      tags={['Sine paths', 'textPath', 'Hover-reactive']}
+      tags={[...c.tags]}
     >
       <div ref={rootRef} className="relative h-56 w-full cursor-crosshair">
         <svg viewBox={`0 0 ${W} ${H}`} className="h-full w-full" preserveAspectRatio="xMidYMid slice">
