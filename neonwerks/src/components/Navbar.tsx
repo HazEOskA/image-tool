@@ -43,7 +43,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-5 md:flex lg:gap-7">
+        <div className="hidden items-center gap-5 lg:flex lg:gap-7">
           {links.map((l) => (
             <a
               key={l.href}
@@ -66,7 +66,7 @@ export default function Navbar() {
         <button
           aria-label="Toggle navigation"
           onClick={() => setOpen((o) => !o)}
-          className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 md:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 lg:hidden"
         >
           <div className="space-y-1.5">
             <span className={`block h-0.5 w-5 bg-white transition ${open ? 'translate-y-2 rotate-45' : ''}`} />
@@ -81,7 +81,7 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-20 w-[calc(100%-2rem)] max-w-6xl rounded-2xl glass-strong p-4 md:hidden"
+          className="absolute top-20 w-[calc(100%-2rem)] max-w-6xl rounded-2xl glass-strong p-4 lg:hidden"
         >
           <div className="flex flex-col gap-1">
             {links.map((l) => (
