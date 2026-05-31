@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "cd neonwerks && npm install",
+  "buildCommand": "cd neonwerks && npm run build",
+  "outputDirectory": "neonwerks/dist",
+  "rewrites": [{ "source": "/((?!assets/).*)", "destination": "/index.html" }]
+}
