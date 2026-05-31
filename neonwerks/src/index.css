@@ -8,6 +8,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* offset anchor targets so they aren't hidden under the fixed navbar */
+  scroll-padding-top: 5.5rem;
 }
 
 body {
