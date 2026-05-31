@@ -40,16 +40,16 @@ export default function LaunchCTA() {
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
           <a
-            href="#showcase"
+            href="#tools"
             className="rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple px-8 py-3.5 text-sm font-semibold text-ink-950 shadow-glow transition-transform hover:scale-[1.04]"
           >
-            Launch App
+            Launch Motion Site
           </a>
           <a
-            href="#explanation"
+            href="#showcase"
             className="rounded-full border border-white/15 px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/5"
           >
-            How it works
+            View Interactive Demo
           </a>
         </div>
 
