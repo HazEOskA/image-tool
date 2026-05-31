@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 const LINKS = [
   { label: 'Overview', href: '#explanation' },
+  { label: 'Builds', href: '#builds' },
   { label: 'Tools', href: '#tools' },
   { label: 'Live Demo', href: '#showcase' },
 ];
@@ -39,7 +40,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex lg:gap-8">
           {LINKS.map((l) => (
             <a
               key={l.href}
