@@ -33,12 +33,17 @@ function Footer() {
           </span>
           <div>
             <p className="text-sm font-extrabold tracking-[0.2em] text-white">NEONWERKS</p>
-            <p className="font-mono text-[11px] text-white/40">3D Creative Pipeline</p>
+            <p className="font-mono text-[11px] text-white/40">Premium Motion Web Design</p>
           </div>
         </div>
-        <p className="font-mono text-xs text-white/40">
-          Built with React · Three.js · Framer Motion · Tailwind
-        </p>
+        <div className="flex flex-col items-center gap-1 text-center">
+          <p className="text-xs text-white/55">
+            Available for custom motion builds, interactive demos &amp; web experiments.
+          </p>
+          <p className="font-mono text-[11px] text-white/35">
+            Crafted with React · Three.js · Framer Motion · Tailwind
+          </p>
+        </div>
         <div className="flex gap-5 text-sm text-white/55">
           <a href="#tools" className="transition-colors hover:text-white">Tools</a>
           <a href="#showcase" className="transition-colors hover:text-white">Demo</a>

@@ -48,31 +48,31 @@ const I = {
 const BUILDS: Build[] = [
   {
     title: 'Animated Landing Page',
-    body: 'For launches, portfolios, creators and premium product pages that need to feel alive.',
+    body: 'A premium launch page for products, portfolios and creators — a first impression that lands and stays.',
     accent: '#34e2ff',
     icon: I.rocket,
   },
   {
     title: 'Interactive Product Demo',
-    body: 'Turn a product workflow into a visual, explorable experience that sells itself.',
+    body: 'Turn your product or workflow into a visual, explorable demo that sells it better than any video.',
     accent: '#4f8bff',
     icon: I.cursor,
   },
   {
     title: 'AI / SaaS Launch Page',
-    body: 'Present complex software with motion, clarity and the kind of trust that converts.',
+    body: 'Make complex software feel clear and trustworthy, with motion that guides attention to what matters.',
     accent: '#9b6bff',
     icon: I.spark,
   },
   {
     title: 'Web3 Visual Experience',
-    body: 'Futuristic launch pages, token dashboards and ecosystem explainers that earn attention.',
+    body: 'Futuristic launch pages, token dashboards and ecosystem explainers that actually earn attention.',
     accent: '#c66bff',
     icon: I.hex,
   },
   {
     title: 'Creator / Music Portfolio',
-    body: 'A cinematic personal site for artists, producers and creative brands — built to be felt.',
+    body: 'A cinematic personal site for artists, producers and creative brands — built to be felt, not skimmed.',
     accent: '#ff5ed3',
     icon: I.wave,
   },
@@ -83,9 +83,9 @@ export default function Builds() {
     <section id="builds" className="relative mx-auto max-w-7xl px-6 py-24">
       <div className="mb-14 flex flex-col items-center">
         <SectionHeading
-          eyebrow="Use cases"
+          eyebrow="What we build"
           title="What You Can Build With NEONWERKS"
-          description="Five proven shapes the pipeline takes in the wild — from product launches to creator portfolios. Pick the closest fit and the tools you saw above slot straight in."
+          description="Whatever you're launching, NEONWERKS can turn it into a premium interactive experience. These are five of the things we build most — find the closest fit to what you need."
         />
       </div>
 

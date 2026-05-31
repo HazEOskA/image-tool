@@ -4,29 +4,29 @@ import SectionHeading from './ui/SectionHeading';
 const STEPS = [
   {
     n: '01',
-    title: 'Compose',
+    title: 'Design',
     accent: '#34e2ff',
-    body: 'Drop in the four WebGL modules as React components. Each one is self-contained, typed, and renders on its own canvas — no global setup, no boilerplate.',
+    body: 'We start with your brand and story, then shape a visual system — type, color, 3D and motion that all belong to the same world.',
   },
   {
     n: '02',
-    title: 'Tune',
+    title: 'Animate',
     accent: '#9b6bff',
-    body: 'Drive every effect from live inputs. Typography tunes to the cursor, shaders dither in real time, the blob lerps toward the pointer, and particles react with a physical repulsion field.',
+    body: 'Every element comes alive and reacts to the visitor: type tunes to the cursor, textures shift, 3D follows the pointer and particles respond on contact.',
   },
   {
     n: '03',
     title: 'Ship',
     accent: '#ff5ed3',
-    body: 'Animation loops run in requestAnimationFrame and mutate refs directly, so React never re-renders per frame. The result is a steady-60-FPS bundle that deploys as a static SPA.',
+    body: 'You get a fast, responsive site engineered to stay smooth at 60 FPS — production-ready code that deploys anywhere, no platform lock-in.',
   },
 ];
 
 const VALUE = [
-  ['One source of truth', 'Tokens, gradients and motion curves are shared across every tool, so the whole pipeline reads as a single product — not four disconnected demos.'],
-  ['Zero-rerender core', 'Pointer state and Three.js loops live in refs. React stays out of the hot path, which keeps interaction smooth even with 3,400 live particles.'],
-  ['Hand-written GLSL', 'Real simplex noise, Bayer 4×4 ordered dithering and additive particle shaders — the actual math ships in the repo, ready to extend.'],
-  ['Responsive by default', 'Adaptive device-pixel-ratio, fluid grids and DOM-measured connectors that re-route from ultrawide down to mobile.'],
+  ['One coherent experience', 'Type, color, motion and 3D share a single design system, so the whole site reads as one premium experience — not a pile of disconnected effects.'],
+  ['Built for 60 FPS', 'The motion runs close to the metal, so interactions stay fluid even with thousands of live particles moving on screen.'],
+  ['Custom visual craft', 'Real custom shaders and motion built for your brand — not a recycled template or an off-the-shelf animation pack.'],
+  ['Sharp on every screen', 'Looks crisp and runs well everywhere, from ultrawide displays down to phones, with layouts that adapt automatically.'],
 ];
 
 export default function HowItWorks() {
@@ -35,8 +35,8 @@ export default function HowItWorks() {
       <div className="mb-16 flex flex-col items-center">
         <SectionHeading
           eyebrow="What is NEONWERKS"
-          title="A pipeline, not a pile of demos"
-          description="NEONWERKS turns four standalone WebGL experiments into one coherent production workflow. Compose the modules, tune them to live input, and ship a fluid, high-performance interactive site — all from typed, modular React."
+          title="A motion studio, not just another website"
+          description="NEONWERKS is a custom visual pipeline for premium interactive websites. We design the look, animate it around your visitor, and ship a fast, polished site — so your product feels as considered as it actually is."
         />
       </div>
 

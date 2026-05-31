@@ -34,16 +34,16 @@ export default function LaunchCTA() {
         </h2>
 
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/55 sm:text-lg">
-          Clone the pipeline, drop in your content, and ship an interactive 3D experience in an afternoon.
-          Everything you saw above is in the repo — typed, modular and production-ready.
+          Have a launch, a product or a portfolio that deserves more than a static page? Let's build a
+          premium animated site or interactive demo — designed and engineered end to end.
         </p>
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
           <a
-            href="#tools"
+            href="#builds"
             className="rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple px-8 py-3.5 text-sm font-semibold text-ink-950 shadow-glow transition-transform hover:scale-[1.04]"
           >
-            Launch Motion Site
+            Start a Motion Build
           </a>
           <a
             href="#showcase"
@@ -56,10 +56,10 @@ export default function LaunchCTA() {
         {/* trust / spec row */}
         <div className="mx-auto mt-12 flex max-w-2xl flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {[
-            ['MIT', 'Open source'],
-            ['0 cfg', 'Vercel-ready'],
-            ['60 FPS', 'Target frame rate'],
-            ['4', 'WebGL tools'],
+            ['Custom', 'Designed + built'],
+            ['60 FPS', 'Buttery smooth'],
+            ['Motion', 'First-class'],
+            ['Fast', 'Production-ready'],
           ].map(([n, l]) => (
             <div key={l} className="flex flex-col items-center">
               <span className="text-2xl font-extrabold text-white">{n}</span>

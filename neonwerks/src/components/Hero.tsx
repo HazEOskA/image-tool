@@ -27,20 +27,19 @@ export default function Hero() {
           className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 font-mono text-xs uppercase tracking-[0.25em] text-white/70"
         >
           <span className="h-2 w-2 animate-pulse rounded-full bg-neon-pink" />
-          3D Creative Pipeline · v1.0
+          Premium Motion Web Design
         </motion.span>
 
         <motion.h1 variants={item} className="text-balance text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-7xl">
-          <span className="text-white">Next-Gen </span>
-          <span className="text-gradient-brand">3D Animated</span>
+          <span className="text-white">Premium </span>
+          <span className="text-gradient-brand">Motion Websites</span>
           <br />
-          <span className="text-white">Web Pipeline</span>
+          <span className="text-white">&amp; Interactive Demos</span>
         </motion.h1>
 
         <motion.p variants={item} className="mt-6 max-w-2xl text-lg leading-relaxed text-white/55">
-          Transform static layouts into interactive, fluid, high-performance web experiences. Four custom
-          WebGL tools — typography, dither shaders, fluid 3D and particle physics — composed into one
-          seamless production pipeline.
+          NEONWERKS designs and builds premium interactive websites, product demos and motion landing
+          pages — turning static pages into experiences people actually remember.
         </motion.p>
 
         <motion.div variants={item} className="mt-9 flex flex-wrap items-center justify-center gap-4">
@@ -51,18 +50,18 @@ export default function Hero() {
             View Live Demo
           </a>
           <a
-            href="#tools"
+            href="#builds"
             className="rounded-full border border-white/15 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5"
           >
-            Explore the Tools
+            See What We Build
           </a>
         </motion.div>
 
         <motion.div variants={item} className="mt-14 grid grid-cols-3 gap-10">
           {[
-            ['60', 'FPS Target'],
-            ['4', 'WebGL Tools'],
-            ['3K+', 'Live Particles'],
+            ['60', 'FPS fluid motion'],
+            ['4', 'Signature tools'],
+            ['100%', 'Custom-built'],
           ].map(([n, l]) => (
             <div key={l} className="flex flex-col items-center">
               <span className="text-3xl font-extrabold text-white">{n}</span>
