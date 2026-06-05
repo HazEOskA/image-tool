@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
+import InteractiveDropBuilder from './components/InteractiveDropBuilder';
 import Builds from './components/Builds';
 import PipelineGrid from './components/PipelineGrid';
 import LiveShowcase from './components/showcase/LiveShowcase';
@@ -14,6 +15,7 @@ export default function App() {
       <main>
         <Hero />
         <HowItWorks />
+        <InteractiveDropBuilder />
         <Builds />
         <PipelineGrid />
         <LiveShowcase />

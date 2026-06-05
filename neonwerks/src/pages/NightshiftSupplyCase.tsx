@@ -514,6 +514,16 @@ function NeonwerksOffer() {
             Send product details
           </a>
         </div>
+        <div className="mt-6 flex justify-center">
+          <Link
+            to="/#drop-builder"
+            className="group inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition-colors hover:text-white"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-neon-cyan" />
+            Try the interactive drop builder
+            <span aria-hidden className="text-neon-cyan transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </Link>
+        </div>
       </Reveal>
     </section>
   );

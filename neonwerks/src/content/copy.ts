@@ -55,6 +55,20 @@ export interface Copy {
       cta: string;
     };
   };
+  dropBuilder: {
+    eyebrow: string;
+    title: string;
+    subhead: string;
+    pickerLabel: string;
+    previewLabel: string;
+    deliverablesLabel: string;
+    deliverables: readonly [string, string, string, string];
+    followupTitle: string;
+    followupBody: string;
+    followupCta: string;
+    selectAria: string;
+    selectedHint: string;
+  };
   pipeline: {
     eyebrow: string;
     title: string;
@@ -172,6 +186,26 @@ const en: Copy = {
       body: 'See how a single clothing drop becomes a cinematic landing page with visuals, motion and social-ready launch assets.',
       cta: 'View case study',
     },
+  },
+  dropBuilder: {
+    eyebrow: 'Try it now',
+    title: 'Build your streetwear drop in 10 seconds',
+    subhead:
+      'Pick a vibe. See the launch page direction. Send your product. We build the landing, visuals, and promo assets.',
+    pickerLabel: 'Pick a vibe',
+    previewLabel: 'Launch page preview',
+    deliverablesLabel: 'Included in every drop',
+    deliverables: [
+      'Landing page',
+      'Product visuals',
+      'Social promo assets',
+      'Mobile-first launch page',
+    ],
+    followupTitle: 'Want this for your brand?',
+    followupBody: 'Send the product. We handle the look, the motion, and the launch assets.',
+    followupCta: 'Build my drop',
+    selectAria: 'Drop style',
+    selectedHint: 'Selected',
   },
   pipeline: {
     eyebrow: 'The Pipeline',
@@ -316,6 +350,26 @@ const pl: Copy = {
       body: 'Zobacz, jak pojedynczy drop ubraniowy staje się kinową landing page z wizualami, animacją i gotowymi materiałami na social media.',
       cta: 'Zobacz case study',
     },
+  },
+  dropBuilder: {
+    eyebrow: 'Wypróbuj teraz',
+    title: 'Zbuduj swój drop streetwear w 10 sekund',
+    subhead:
+      'Wybierz klimat. Zobacz kierunek landing page. Wyślij produkt. My budujemy stronę, wizualizacje i materiały promo.',
+    pickerLabel: 'Wybierz klimat',
+    previewLabel: 'Podgląd landing page',
+    deliverablesLabel: 'W każdym dropie',
+    deliverables: [
+      'Strona landing',
+      'Wizualizacje produktu',
+      'Materiały na social media',
+      'Mobile-first launch page',
+    ],
+    followupTitle: 'Chcesz tego dla swojej marki?',
+    followupBody: 'Wyślij produkt. My ogarniamy wygląd, animację i materiały launchowe.',
+    followupCta: 'Zbuduj mój drop',
+    selectAria: 'Styl dropu',
+    selectedHint: 'Wybrany',
   },
   pipeline: {
     eyebrow: 'Pipeline',
