@@ -1,0 +1,80 @@
+/* NEON BOT — keyframe + glow details (layout/colors stay in Tailwind/JSX) */
+
+.neonbot-root {
+  /* the fixed wrapper only needs to capture pointer on the button itself */
+  pointer-events: none;
+}
+.neonbot-btn {
+  pointer-events: auto;
+  touch-action: none; /* let the bot own touch drags without scrolling the page */
+}
+
+/* gentle idle bob — lives on an inner layer so it never fights the x/y transform */
+.neonbot-float {
+  animation: neonbot-float 4.2s ease-in-out infinite;
+}
+@keyframes neonbot-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* thruster flame flicker */
+.neonbot-thruster {
+  transform-origin: 50% 0%;
+  animation: neonbot-thruster 0.28s ease-in-out infinite alternate;
+}
+@keyframes neonbot-thruster {
+  0% {
+    opacity: 0.55;
+    transform: scaleY(0.8) scaleX(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1.15) scaleX(1.05);
+  }
+}
+
+/* antenna blink */
+.neonbot-blink {
+  animation: neonbot-blink 1.8s steps(1, end) infinite;
+}
+@keyframes neonbot-blink {
+  0%,
+  60% {
+    opacity: 1;
+  }
+  70%,
+  100% {
+    opacity: 0.25;
+  }
+}
+
+/* scan line sweeping the visor */
+.neonbot-scan {
+  animation: neonbot-scan 2.4s ease-in-out infinite;
+}
+@keyframes neonbot-scan {
+  0%,
+  100% {
+    transform: translateY(-3px);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(3px);
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neonbot-float,
+  .neonbot-thruster,
+  .neonbot-blink,
+  .neonbot-scan {
+    animation: none !important;
+  }
+}

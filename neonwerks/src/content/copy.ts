@@ -69,6 +69,12 @@ export interface Copy {
     selectAria: string;
     selectedHint: string;
   };
+  neonBot: {
+    aria: string;
+    hint: string;
+    tourLabel: string;
+    stations: readonly { id: string; name: string; tip: string }[];
+  };
   pipeline: {
     eyebrow: string;
     title: string;
@@ -206,6 +212,17 @@ const en: Copy = {
     followupCta: 'Build my drop',
     selectAria: 'Drop style',
     selectedHint: 'Selected',
+  },
+  neonBot: {
+    aria: 'NEON BOT — interactive guide. Press and drag it to a tool, or tap to tour all four.',
+    hint: 'Drag me to a tool · or tap to tour',
+    tourLabel: 'Touring the pipeline…',
+    stations: [
+      { id: 'visual-generator', name: 'Visual Generator', tip: 'We create the first product look.' },
+      { id: 'motion-scene', name: 'Motion Scene', tip: 'We add cinematic movement.' },
+      { id: 'landing-builder', name: 'Landing Builder', tip: 'We turn the vibe into a launch page.' },
+      { id: 'launch-exporter', name: 'Launch Asset Exporter', tip: 'We export promo assets for social.' },
+    ],
   },
   pipeline: {
     eyebrow: 'The Pipeline',
@@ -370,6 +387,17 @@ const pl: Copy = {
     followupCta: 'Zbuduj mój drop',
     selectAria: 'Styl dropu',
     selectedHint: 'Wybrany',
+  },
+  neonBot: {
+    aria: 'NEON BOT — interaktywny przewodnik. Przeciągnij go do narzędzia albo dotknij, żeby zobaczyć tour po czterech.',
+    hint: 'Przeciągnij mnie do narzędzia · lub dotknij',
+    tourLabel: 'Tour po pipeline…',
+    stations: [
+      { id: 'visual-generator', name: 'Visual Generator', tip: 'Tworzymy pierwszy wygląd produktu.' },
+      { id: 'motion-scene', name: 'Motion Scene', tip: 'Dodajemy kinowy ruch.' },
+      { id: 'landing-builder', name: 'Landing Builder', tip: 'Zamieniamy klimat w landing page.' },
+      { id: 'launch-exporter', name: 'Launch Asset Exporter', tip: 'Eksportujemy materiały promo na social media.' },
+    ],
   },
   pipeline: {
     eyebrow: 'Pipeline',

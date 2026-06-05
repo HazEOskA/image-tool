@@ -32,16 +32,16 @@ export default function PipelineGrid() {
           ref={gridRef}
           className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4"
         >
-          <div ref={c0}>
+          <div ref={c0} data-tool-id="visual-generator">
             <StringTuneCard />
           </div>
-          <div ref={c1}>
+          <div ref={c1} data-tool-id="motion-scene">
             <AstroditherCard />
           </div>
-          <div ref={c2}>
+          <div ref={c2} data-tool-id="landing-builder">
             <SmoothieCard />
           </div>
-          <div ref={c3}>
+          <div ref={c3} data-tool-id="launch-exporter">
             <ParticleSimulatorCard />
           </div>
         </div>

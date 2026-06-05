@@ -6,6 +6,7 @@ import Builds from './components/Builds';
 import PipelineGrid from './components/PipelineGrid';
 import LiveShowcase from './components/showcase/LiveShowcase';
 import LaunchCTA from './components/LaunchCTA';
+import NeonBot from './components/NeonBot';
 import { useLang } from './i18n';
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <LaunchCTA />
       </main>
       <Footer />
+      <NeonBot />
     </div>
   );
 }
