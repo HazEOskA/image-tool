@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import SectionHeading from './ui/SectionHeading';
 import { useLang } from '../i18n';
+import { Link } from '../router';
 
 /* Minimal inline icon set — no new dependency. */
 const I = {
@@ -97,6 +98,45 @@ export default function Builds() {
           );
         })}
       </div>
+
+      {/* featured case study -> NIGHTSHIFT SUPPLY */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.55, ease: [0.21, 0.6, 0.35, 1] }}
+        className="mt-6"
+      >
+        <Link
+          to="/cases/nightshift-supply"
+          className="group relative flex flex-col gap-4 overflow-hidden rounded-2xl glass-strong p-6 shadow-card sm:flex-row sm:items-center sm:gap-6 sm:p-7"
+        >
+          <div
+            className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
+            style={{ background: '#ff5ed3' }}
+          />
+          {/* mini visual */}
+          <div className="relative grid h-20 w-20 shrink-0 place-items-center rounded-xl border border-white/10 bg-ink-950/60">
+            <svg viewBox="0 0 200 200" className="h-12 w-12" fill="none" aria-hidden>
+              <g stroke="#34e2ff" strokeWidth="3" strokeLinejoin="round">
+                <path d="M70 38 q30 -20 60 0 l-6 22 q-24 -14 -48 0 z" />
+                <path d="M58 56 q42 22 84 0 l20 16 -16 26 -10 -6 4 64 q-46 12 -80 0 l4 -64 -10 6 -16 -26 z" />
+              </g>
+            </svg>
+          </div>
+          <div className="relative z-10 flex-1">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-neon-pink">
+              {t.builds.featured.tag}
+            </span>
+            <h3 className="mt-1 text-lg font-bold text-white">{t.builds.featured.title}</h3>
+            <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-white/55">{t.builds.featured.body}</p>
+          </div>
+          <span className="relative z-10 inline-flex shrink-0 items-center gap-2 rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple px-5 py-2.5 text-sm font-semibold text-ink-950">
+            {t.builds.featured.cta}
+            <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </span>
+        </Link>
+      </motion.div>
 
       <div className="mt-12 flex justify-center">
         <a
