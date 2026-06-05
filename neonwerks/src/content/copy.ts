@@ -48,6 +48,12 @@ export interface Copy {
     description: string;
     items: readonly { title: string; body: string }[];
     cta: string;
+    featured: {
+      tag: string;
+      title: string;
+      body: string;
+      cta: string;
+    };
   };
   pipeline: {
     eyebrow: string;
@@ -160,6 +166,12 @@ const en: Copy = {
       { title: 'Creator / Music Portfolio', body: 'A cinematic personal site for artists, producers and creative brands — built to be felt, not skimmed.' },
     ],
     cta: 'Explore the pipeline',
+    featured: {
+      tag: 'Case study · Streetwear drop',
+      title: 'NIGHTSHIFT SUPPLY — NS-01 Heavy Hoodie',
+      body: 'See how a single clothing drop becomes a cinematic landing page with visuals, motion and social-ready launch assets.',
+      cta: 'View case study',
+    },
   },
   pipeline: {
     eyebrow: 'The Pipeline',
@@ -298,6 +310,12 @@ const pl: Copy = {
       { title: 'Portfolio twórcy / muzyka', body: 'Kinowa osobista strona dla artystów, producentów i marek kreatywnych — zbudowana tak, żeby się ją czuło.' },
     ],
     cta: 'Zobacz proces',
+    featured: {
+      tag: 'Case study · Drop streetwear',
+      title: 'NIGHTSHIFT SUPPLY — NS-01 Heavy Hoodie',
+      body: 'Zobacz, jak pojedynczy drop ubraniowy staje się kinową landing page z wizualami, animacją i gotowymi materiałami na social media.',
+      cta: 'Zobacz case study',
+    },
   },
   pipeline: {
     eyebrow: 'Pipeline',
