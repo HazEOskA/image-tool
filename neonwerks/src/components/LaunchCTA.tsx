@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { useLang } from '../i18n';
-import { triggerContactWarp } from '../utils/contactWarp';
+
+const CONTACT_EMAIL = 'osabarca@gmail.com';
 
 export default function LaunchCTA() {
   const { t } = useLang();
+  const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(t.cta.mailSubject)}&body=${encodeURIComponent(t.cta.mailBody)}`;
 
   return (
     <section id="launch" className="relative mx-auto max-w-7xl px-6 py-24">
@@ -43,11 +45,10 @@ export default function LaunchCTA() {
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
           <a
-            href="#streetwear-brief"
-            onClick={triggerContactWarp}
+            href={mailto}
             className="rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple px-8 py-3.5 text-sm font-semibold text-ink-950 shadow-glow transition-transform hover:scale-[1.04]"
           >
-            Build my launch page
+            {t.cta.primary}
           </a>
           <a
             href="#showcase"

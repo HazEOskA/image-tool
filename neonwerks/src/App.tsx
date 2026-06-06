@@ -5,14 +5,11 @@ import Builds from './components/Builds';
 import PipelineGrid from './components/PipelineGrid';
 import LiveShowcase from './components/showcase/LiveShowcase';
 import LaunchCTA from './components/LaunchCTA';
-import NeonContactWarp from './components/NeonContactWarp';
-import StreetwearBriefForm from './components/StreetwearBriefForm';
 import { useLang } from './i18n';
 
 export default function App() {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <NeonContactWarp />
       <Navbar />
       <main>
         <Hero />
@@ -21,7 +18,6 @@ export default function App() {
         <PipelineGrid />
         <LiveShowcase />
         <LaunchCTA />
-        <StreetwearBriefForm />
       </main>
       <Footer />
     </div>
