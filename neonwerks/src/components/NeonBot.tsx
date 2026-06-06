@@ -18,8 +18,9 @@ import './NeonBot.css';
  * never triggers React re-renders. Only small visual-state changes do.
  */
 
-const SIZE = 60; // interactive footprint used for clamping
+const SIZE = 72; // interactive footprint used for clamping (slightly bigger bot)
 const MARGIN = 18;
+const CONTACT_EMAIL = 'osabarca@gmail.com';
 const DRAG_THRESHOLD = 6; // px before a press counts as a drag (vs a tap)
 const HIT_PAD = 70; // how far outside a card still counts as "near"
 
@@ -56,6 +57,9 @@ export default function NeonBot() {
   const [hovered, setHovered] = useState(false);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
   const [showHint, setShowHint] = useState(true);
+  // first-contact message bubble (opened on click/tap; does NOT navigate)
+  const [bubbleOpen, setBubbleOpen] = useState(false);
+  const [bubbleSide, setBubbleSide] = useState<Tooltip['side']>('left');
 
   // refs that must not trigger re-renders
   const animX = useRef<AnimationPlaybackControls | null>(null);
@@ -124,6 +128,23 @@ export default function NeonBot() {
     if (cx > window.innerWidth - 150) return 'left';
     if (cx < 150) return 'right';
     return 'center';
+  };
+
+  // Open/close the first-contact bubble. Anchors away from the nearest edge so
+  // it never overflows the viewport. Does not navigate anywhere.
+  const toggleBubble = () => {
+    runId.current++; // stop any in-flight tour/flight so the bot holds still
+    stopAnims();
+    setTooltip(null);
+    setShowHint(false);
+    setBubbleSide(tooltipSide(x.get() + SIZE / 2));
+    setBubbleOpen((o) => !o);
+  };
+
+  // Triggered from inside the bubble — preserves the original guided tour.
+  const startTourFromBubble = () => {
+    setBubbleOpen(false);
+    autoTour();
   };
 
   const flyToStation = useCallback(
@@ -207,6 +228,7 @@ export default function NeonBot() {
     if (!drag.current.moved && Math.hypot(dx, dy) > DRAG_THRESHOLD) {
       drag.current.moved = true;
       setPhaseBoth('drag');
+      setBubbleOpen(false); // a real drag dismisses the message bubble
     }
     if (drag.current.moved) {
       x.set(clamp(e.clientX - drag.current.offX, MARGIN, window.innerWidth - SIZE - MARGIN));
@@ -225,7 +247,8 @@ export default function NeonBot() {
     }
 
     if (!wasDrag) {
-      autoTour();
+      // a click/tap opens the first-contact bubble — it does NOT navigate
+      toggleBubble();
       return;
     }
     // dropped after a drag: snap to nearest station, else boost home
@@ -260,12 +283,16 @@ export default function NeonBot() {
   const onKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      autoTour();
+      toggleBubble();
+    } else if (e.key === 'Escape' && bubbleOpen) {
+      e.preventDefault();
+      setBubbleOpen(false);
     }
   };
 
-  const active = hovered || phase === 'drag' || phase === 'fly' || phase === 'tour';
+  const active = hovered || bubbleOpen || phase === 'drag' || phase === 'fly' || phase === 'tour';
   const eye = active ? '#34e2ff' : '#1f6f86';
+  const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(t.neonBot.bubble.mailSubject)}`;
 
   return (
     <motion.div
@@ -293,8 +320,63 @@ export default function NeonBot() {
         </motion.div>
       )}
 
+      {/* first-contact message bubble — opens on click/tap, no navigation */}
+      {bubbleOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: 8, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.28, ease: [0.21, 0.6, 0.35, 1] }}
+          role="dialog"
+          aria-label="NEON BOT message"
+          className={`pointer-events-auto absolute bottom-full mb-3 w-72 max-w-[78vw] overflow-hidden rounded-2xl border border-white/15 bg-ink-900/95 shadow-card backdrop-blur-xl ${
+            bubbleSide === 'left' ? 'right-0' : bubbleSide === 'right' ? 'left-0' : 'left-1/2 -translate-x-1/2'
+          }`}
+        >
+          {/* neon top edge */}
+          <div
+            className="pointer-events-none absolute inset-x-4 top-0 h-px"
+            style={{ background: 'linear-gradient(90deg, transparent, #34e2ff, #9b6bff, transparent)' }}
+          />
+          <div className="p-4">
+            <div className="flex items-center justify-between">
+              <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-neon-cyan">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-neon-pink" />
+                NEON BOT
+              </span>
+              <button
+                type="button"
+                onClick={() => setBubbleOpen(false)}
+                aria-label={t.neonBot.bubble.close}
+                className="grid h-6 w-6 place-items-center rounded-full border border-white/15 text-white/55 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                ×
+              </button>
+            </div>
+
+            <p className="mt-3 text-sm leading-relaxed text-white/85">{t.neonBot.bubble.greeting}</p>
+
+            <div className="mt-4 flex flex-col gap-2">
+              <a
+                href={mailto}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple px-4 py-2 text-sm font-semibold text-ink-950 shadow-glow transition-transform hover:scale-[1.03]"
+              >
+                {t.neonBot.bubble.leaveMessage}
+                <span aria-hidden>→</span>
+              </a>
+              <button
+                type="button"
+                onClick={startTourFromBubble}
+                className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/5"
+              >
+                {t.neonBot.bubble.showTools}
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       {/* idle hint pill (opens leftward from the dock so it never overflows) */}
-      {showHint && phase === 'idle' && (
+      {showHint && phase === 'idle' && !bubbleOpen && (
         <motion.div
           initial={{ opacity: 0, x: 8 }}
           animate={{ opacity: 1, x: 0 }}
@@ -313,7 +395,7 @@ export default function NeonBot() {
 
       <button
         type="button"
-        className="neonbot-btn relative block h-[60px] w-[60px] cursor-grab rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan active:cursor-grabbing"
+        className="neonbot-btn relative block h-[72px] w-[72px] cursor-grab rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan active:cursor-grabbing"
         style={{ touchAction: 'none' }}
         aria-label={t.neonBot.aria}
         onPointerDown={onPointerDown}
@@ -327,7 +409,7 @@ export default function NeonBot() {
         {/* glow halo */}
         <span
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full blur-xl transition-opacity duration-300"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full blur-xl transition-opacity duration-300"
           style={{ background: '#34e2ff', opacity: active ? 0.5 : 0.22 }}
         />
 

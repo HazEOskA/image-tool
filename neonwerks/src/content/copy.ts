@@ -74,6 +74,13 @@ export interface Copy {
     hint: string;
     tourLabel: string;
     stations: readonly { id: string; name: string; tip: string }[];
+    bubble: {
+      greeting: string;
+      leaveMessage: string;
+      showTools: string;
+      close: string;
+      mailSubject: string;
+    };
   };
   pipeline: {
     eyebrow: string;
@@ -214,8 +221,8 @@ const en: Copy = {
     selectedHint: 'Selected',
   },
   neonBot: {
-    aria: 'NEON BOT — interactive guide. Press and drag it to a tool, or tap to tour all four.',
-    hint: 'Drag me to a tool · or tap to tour',
+    aria: 'NEON BOT — interactive guide. Press and drag it to a tool, or tap to open a message.',
+    hint: 'Drag me to a tool · or tap to chat',
     tourLabel: 'Touring the pipeline…',
     stations: [
       { id: 'visual-generator', name: 'Visual Generator', tip: 'We create the first product look.' },
@@ -223,6 +230,14 @@ const en: Copy = {
       { id: 'landing-builder', name: 'Landing Builder', tip: 'We turn the vibe into a launch page.' },
       { id: 'launch-exporter', name: 'Launch Asset Exporter', tip: 'We export promo assets for social.' },
     ],
+    bubble: {
+      greeting:
+        'Hello! This site is owned by OSmenik. Want to cooperate or build something visual, AI-powered, or custom? Leave a message or use the contact form.',
+      leaveMessage: 'Leave a message',
+      showTools: 'Show me the tools',
+      close: 'Close',
+      mailSubject: "NEONWERKS — let's cooperate",
+    },
   },
   pipeline: {
     eyebrow: 'The Pipeline',
@@ -389,8 +404,8 @@ const pl: Copy = {
     selectedHint: 'Wybrany',
   },
   neonBot: {
-    aria: 'NEON BOT — interaktywny przewodnik. Przeciągnij go do narzędzia albo dotknij, żeby zobaczyć tour po czterech.',
-    hint: 'Przeciągnij mnie do narzędzia · lub dotknij',
+    aria: 'NEON BOT — interaktywny przewodnik. Przeciągnij go do narzędzia albo dotknij, żeby otworzyć wiadomość.',
+    hint: 'Przeciągnij mnie do narzędzia · lub dotknij, by napisać',
     tourLabel: 'Tour po pipeline…',
     stations: [
       { id: 'visual-generator', name: 'Visual Generator', tip: 'Tworzymy pierwszy wygląd produktu.' },
@@ -398,6 +413,14 @@ const pl: Copy = {
       { id: 'landing-builder', name: 'Landing Builder', tip: 'Zamieniamy klimat w landing page.' },
       { id: 'launch-exporter', name: 'Launch Asset Exporter', tip: 'Eksportujemy materiały promo na social media.' },
     ],
+    bubble: {
+      greeting:
+        'Cześć! Tę stronę prowadzi OSmenik. Chcesz współpracować albo zbudować coś wizualnego, opartego na AI lub custom? Zostaw wiadomość lub użyj formularza kontaktowego.',
+      leaveMessage: 'Zostaw wiadomość',
+      showTools: 'Pokaż narzędzia',
+      close: 'Zamknij',
+      mailSubject: 'NEONWERKS — współpraca',
+    },
   },
   pipeline: {
     eyebrow: 'Pipeline',
