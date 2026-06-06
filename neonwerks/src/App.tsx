@@ -2,6 +2,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
 import InteractiveDropBuilder from './components/InteractiveDropBuilder';
+import LiveProof from './components/LiveProof';
 import Builds from './components/Builds';
 import PipelineGrid from './components/PipelineGrid';
 import LiveShowcase from './components/showcase/LiveShowcase';
@@ -17,6 +18,7 @@ export default function App() {
         <Hero />
         <HowItWorks />
         <InteractiveDropBuilder />
+        <LiveProof />
         <Builds />
         <PipelineGrid />
         <LiveShowcase />
