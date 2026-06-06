@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useLang } from '../i18n';
 import type { Lang } from '../content/copy';
+import { triggerContactWarp } from '../utils/contactWarp';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,10 +56,11 @@ export default function Navbar() {
           ))}
           <LangToggle lang={lang} setLang={setLang} ariaLabel={t.nav.toggleAria} />
           <a
-            href="#launch"
+            href="#streetwear-brief"
+            onClick={triggerContactWarp}
             className="rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple px-5 py-2 text-sm font-semibold text-ink-950 shadow-glow transition-transform hover:scale-105"
           >
-            {t.nav.launch}
+            Contact
           </a>
         </div>
 
@@ -101,11 +103,14 @@ export default function Navbar() {
               <LangToggle lang={lang} setLang={setLang} ariaLabel={t.nav.toggleAria} />
             </div>
             <a
-              href="#launch"
-              onClick={() => setOpen(false)}
+              href="#streetwear-brief"
+              onClick={(event) => {
+                setOpen(false);
+                triggerContactWarp(event);
+              }}
               className="mt-1 rounded-lg bg-gradient-to-r from-neon-cyan to-neon-purple px-3 py-2.5 text-center text-sm font-semibold text-ink-950"
             >
-              {t.nav.launch}
+              Contact
             </a>
           </div>
         </motion.div>
