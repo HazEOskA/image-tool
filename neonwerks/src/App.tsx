@@ -5,6 +5,7 @@ import InteractiveDropBuilder from './components/InteractiveDropBuilder';
 import Builds from './components/Builds';
 import PipelineGrid from './components/PipelineGrid';
 import LiveShowcase from './components/showcase/LiveShowcase';
+import Contact from './components/Contact';
 import LaunchCTA from './components/LaunchCTA';
 import NeonBot from './components/NeonBot';
 import { useLang } from './i18n';
@@ -20,6 +21,7 @@ export default function App() {
         <Builds />
         <PipelineGrid />
         <LiveShowcase />
+        <Contact />
         <LaunchCTA />
       </main>
       <Footer />
@@ -47,11 +49,15 @@ function Footer() {
           <p className="font-mono text-[11px] text-white/35">{t.footer.stack}</p>
         </div>
         <div className="flex gap-5 text-sm text-white/55">
+          <a href="#contact" className="transition-colors hover:text-white">Contact</a>
           <a href="#tools" className="transition-colors hover:text-white">{t.footer.links.tools}</a>
           <a href="#showcase" className="transition-colors hover:text-white">{t.footer.links.demo}</a>
           <a href="#top" className="transition-colors hover:text-white">{t.footer.links.top}</a>
         </div>
       </div>
+      <p className="mx-auto mt-8 max-w-7xl text-center font-mono text-[11px] text-white/40">
+        Built by OSmenik — AI visuals, landing pages, and product systems.
+      </p>
     </footer>
   );
 }
