@@ -11,8 +11,12 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.17.10",
+    "@react-three/postprocessing": "^2.19.1",
+    "@react-three/rapier": "^1.5.0",
     "framer-motion": "^11.11.9",
+    "postprocessing": "^6.39.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "three": "^0.169.0"

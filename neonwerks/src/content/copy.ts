@@ -81,6 +81,25 @@ export interface Copy {
     cardCaption: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    /** Strings for the interactive pipeline-graph mini-app. */
+    graph: {
+      interact: string;
+      inspector: string;
+      reset: string;
+      zoomInAria: string;
+      zoomOutAria: string;
+      empty: string;
+      core: string;
+      coreDesc: string;
+      throughput: string;
+      load: string;
+      tags: string;
+      statNodes: string;
+      statZoom: string;
+      statLinks: string;
+      selected: string;
+      canvasAria: string;
+    };
   };
   neonBot: {
     aria: string;
@@ -235,9 +254,9 @@ const en: Copy = {
   },
   liveProof: {
     eyebrow: 'Live Proof',
-    title: 'Live Proof: Interactive Brain System',
+    title: 'Live Proof: Interactive Pipeline Graph',
     body:
-      "Not a mockup. Not a concept slide. This is a real, deployed interactive portfolio — a control-brain style system you can open and drive right now. It runs the same motion engineering NEONWERKS ships into client builds.",
+      'Not a mockup. Not a screenshot. This is a real, running mini-app wiring the four NEONWERKS tools to one engine. Drag the canvas, zoom, and click any node — the inspector and connections react live, the same motion engineering we ship into client builds.',
     badge: 'Live · deployed on Vercel',
     panelLabel: "What you're looking at",
     points: [
@@ -249,6 +268,24 @@ const en: Copy = {
     cardCaption: 'Real-time interactive system · not a static mockup',
     ctaPrimary: 'Open Live Demo',
     ctaSecondary: 'Build My Visual System',
+    graph: {
+      interact: 'Drag canvas · scroll to zoom · click a node',
+      inspector: 'Tool inspector',
+      reset: 'Reset view',
+      zoomInAria: 'Zoom in',
+      zoomOutAria: 'Zoom out',
+      empty: 'Click any node to inspect a live tool',
+      core: 'NEON ENGINE',
+      coreDesc: 'Shared 60 FPS render core — every tool plugs into one rAF loop.',
+      throughput: 'Throughput',
+      load: 'GPU load',
+      tags: 'Pipeline',
+      statNodes: 'Nodes',
+      statZoom: 'Zoom',
+      statLinks: 'Links',
+      selected: 'Selected',
+      canvasAria: 'Interactive pipeline graph — drag to pan, scroll to zoom, click a node to inspect it.',
+    },
   },
   neonBot: {
     aria: 'NEON BOT — interactive guide. Press and drag it to a tool, or tap to open a message.',
@@ -435,9 +472,9 @@ const pl: Copy = {
   },
   liveProof: {
     eyebrow: 'Dowód na żywo',
-    title: 'Dowód na żywo: interaktywny system-mózg',
+    title: 'Dowód na żywo: interaktywny graf pipeline',
     body:
-      'To nie mockup ani slajd z koncepcją. To prawdziwe, wdrożone interaktywne portfolio — system w stylu control-brain, który możesz otworzyć i obsłużyć już teraz. Działa na tej samej inżynierii ruchu, którą NEONWERKS wdraża w projektach klientów.',
+      'To nie mockup ani zrzut ekranu. To prawdziwa, działająca mini-aplikacja łącząca cztery narzędzia NEONWERKS z jednym silnikiem. Przeciągaj kanwę, przybliżaj i klikaj węzły — inspektor i połączenia reagują na żywo, na tej samej inżynierii ruchu, którą wdrażamy u klientów.',
     badge: 'Live · wdrożone na Vercel',
     panelLabel: 'Na co patrzysz',
     points: [
@@ -449,6 +486,24 @@ const pl: Copy = {
     cardCaption: 'System interaktywny w czasie rzeczywistym · nie statyczny mockup',
     ctaPrimary: 'Otwórz demo na żywo',
     ctaSecondary: 'Zbuduj mój system wizualny',
+    graph: {
+      interact: 'Przeciągaj kanwę · scroll = zoom · kliknij węzeł',
+      inspector: 'Inspektor narzędzia',
+      reset: 'Resetuj widok',
+      zoomInAria: 'Przybliż',
+      zoomOutAria: 'Oddal',
+      empty: 'Kliknij dowolny węzeł, żeby podejrzeć narzędzie na żywo',
+      core: 'NEON ENGINE',
+      coreDesc: 'Wspólny rdzeń renderu 60 FPS — każde narzędzie wpina się w jedną pętlę rAF.',
+      throughput: 'Przepustowość',
+      load: 'Obciążenie GPU',
+      tags: 'Pipeline',
+      statNodes: 'Węzły',
+      statZoom: 'Zoom',
+      statLinks: 'Połączenia',
+      selected: 'Wybrany',
+      canvasAria: 'Interaktywny graf pipeline — przeciągaj, żeby przesuwać, scroll, żeby przybliżać, kliknij węzeł, żeby go podejrzeć.',
+    },
   },
   neonBot: {
     aria: 'NEON BOT — interaktywny przewodnik. Przeciągnij go do narzędzia albo dotknij, żeby otworzyć wiadomość.',

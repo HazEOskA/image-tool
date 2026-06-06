@@ -18,10 +18,26 @@ export default {
           purple: '#9b6bff',
           pink: '#ff5ed3',
         },
+        // Street Cyber OS palette (1:1 with the portfolio brain)
+        concrete: '#131313',
+        surface: '#1a1a1a',
+        steel: '#252525',
+        wire: '#333333',
+        smoke: '#808080',
+        fog: '#444444',
+        'off-white': '#f2f2f0',
+        orange: '#ff4500',
+        'green-neon': '#39ff14',
+        yellow: '#ffe500',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'Segoe UI', 'sans-serif'],
+        display: ['"Bebas Neue"', 'Impact', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
+      fontSize: {
+        'display-md': ['clamp(2rem,5vw,4.5rem)', { lineHeight: '1.0', letterSpacing: '0.03em' }],
+        label: ['0.625rem', { lineHeight: '1', letterSpacing: '0.22em' }],
       },
       boxShadow: {
         glow: '0 0 40px -8px rgba(52, 226, 255, 0.45)',
