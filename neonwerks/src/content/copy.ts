@@ -69,6 +69,19 @@ export interface Copy {
     selectAria: string;
     selectedHint: string;
   };
+  liveProof: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    badge: string;
+    panelLabel: string;
+    points: readonly [string, string, string];
+    /** Three module readouts shown as live progress bars in the console. */
+    modules: readonly [string, string, string];
+    cardCaption: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+  };
   neonBot: {
     aria: string;
     hint: string;
@@ -219,6 +232,23 @@ const en: Copy = {
     followupCta: 'Build my drop',
     selectAria: 'Drop style',
     selectedHint: 'Selected',
+  },
+  liveProof: {
+    eyebrow: 'Live Proof',
+    title: 'Live Proof: Interactive Brain System',
+    body:
+      "Not a mockup. Not a concept slide. This is a real, deployed interactive portfolio — a control-brain style system you can open and drive right now. It runs the same motion engineering NEONWERKS ships into client builds.",
+    badge: 'Live · deployed on Vercel',
+    panelLabel: "What you're looking at",
+    points: [
+      'A fully deployed interactive portfolio — live in production, not a static image.',
+      'Control-brain style interface: connected nodes, motion and real-time interaction.',
+      'Built with the same pipeline behind every NEONWERKS landing page.',
+    ],
+    modules: ['Interactive brain', 'Motion engineering', 'Deploy pipeline'],
+    cardCaption: 'Real-time interactive system · not a static mockup',
+    ctaPrimary: 'Open Live Demo',
+    ctaSecondary: 'Build My Visual System',
   },
   neonBot: {
     aria: 'NEON BOT — interactive guide. Press and drag it to a tool, or tap to open a message.',
@@ -402,6 +432,23 @@ const pl: Copy = {
     followupCta: 'Zbuduj mój drop',
     selectAria: 'Styl dropu',
     selectedHint: 'Wybrany',
+  },
+  liveProof: {
+    eyebrow: 'Dowód na żywo',
+    title: 'Dowód na żywo: interaktywny system-mózg',
+    body:
+      'To nie mockup ani slajd z koncepcją. To prawdziwe, wdrożone interaktywne portfolio — system w stylu control-brain, który możesz otworzyć i obsłużyć już teraz. Działa na tej samej inżynierii ruchu, którą NEONWERKS wdraża w projektach klientów.',
+    badge: 'Live · wdrożone na Vercel',
+    panelLabel: 'Na co patrzysz',
+    points: [
+      'W pełni wdrożone interaktywne portfolio — żywe na produkcji, nie statyczny obrazek.',
+      'Interfejs w stylu control-brain: połączone węzły, ruch i interakcja w czasie rzeczywistym.',
+      'Zbudowane na tym samym pipeline, co każda landing page NEONWERKS.',
+    ],
+    modules: ['Interaktywny mózg', 'Inżynieria ruchu', 'Pipeline wdrożeń'],
+    cardCaption: 'System interaktywny w czasie rzeczywistym · nie statyczny mockup',
+    ctaPrimary: 'Otwórz demo na żywo',
+    ctaSecondary: 'Zbuduj mój system wizualny',
   },
   neonBot: {
     aria: 'NEON BOT — interaktywny przewodnik. Przeciągnij go do narzędzia albo dotknij, żeby otworzyć wiadomość.',
