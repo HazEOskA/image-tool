@@ -252,9 +252,9 @@ main h2:has(.wildstyle-title)::after { display: none; }
 .galaxy-ship {
   position: absolute;
   z-index: 3;
-  width: 78px;
+  width: clamp(82px, 7vw, 118px);
   color: #00e5ea;
-  filter: drop-shadow(0 0 6px currentColor);
+  filter: drop-shadow(0 0 7px currentColor) drop-shadow(0 8px 10px rgba(0,0,0,.9));
   will-change: transform;
 }
 
@@ -273,32 +273,109 @@ main h2:has(.wildstyle-title)::after { display: none; }
   box-shadow: 0 0 7px currentColor;
 }
 
-.ship-one { top: 18%; left: -130px; animation: ship-flight-one 24s linear -7s infinite; }
-.ship-two { top: 62%; right: -130px; color: #ff008c; transform: scaleX(-1); animation: ship-flight-two 31s linear -17s infinite; }
-.ship-three { top: 39%; left: -110px; width: 52px; color: #dfff00; opacity: .72; animation: ship-flight-three 38s linear -29s infinite; }
+.fleet-status {
+  position: absolute;
+  z-index: 4;
+  right: 22px;
+  top: 88px;
+  color: rgba(0,229,234,.48);
+  font: 8px/1 'Share Tech Mono', monospace;
+  letter-spacing: .16em;
+  text-shadow: 0 0 8px #00e5ea;
+}
+
+.ship-squadron { position: absolute; inset: 0; z-index: 3; }
+.squadron-fast { animation: squadron-fast-cycle 27s linear infinite; }
+.squadron-hover { animation: squadron-hover-cycle 27s linear infinite; }
+.squadron-teleport { animation: squadron-teleport-cycle 27s linear infinite; }
+
+/* Squadron A — three high-speed attack craft crossing on different vectors. */
+.fast-one { top: 17%; left: -14vw; color: #00e5ea; animation: fast-flight-one 5.8s linear infinite; }
+.fast-two { top: 47%; right: -14vw; color: #ff008c; transform: scaleX(-1); animation: fast-flight-two 7.1s linear -2.2s infinite; }
+.fast-three { top: 72%; left: -14vw; color: #dfff00; animation: fast-flight-three 6.4s linear -4s infinite; }
+
+/* Squadron B — sentries hold visible positions and breathe/scan. */
+.hover-one { left: 12%; top: 21%; color: #00e5ea; animation: sentry-hover-one 3.3s ease-in-out infinite alternate; }
+.hover-two { right: 13%; top: 38%; color: #ff008c; transform: scaleX(-1); animation: sentry-hover-two 4.1s ease-in-out infinite alternate; }
+.hover-three { left: 46%; top: 69%; color: #dfff00; animation: sentry-hover-three 3.7s ease-in-out infinite alternate; }
+
+/* Squadron C — step timing creates hard cyberpunk teleport jumps. */
+.teleport-one { color: #00e5ea; animation: teleport-one 6.8s steps(1, end) infinite; }
+.teleport-two { color: #ff008c; transform: scaleX(-1); animation: teleport-two 7.6s steps(1, end) -2.1s infinite; }
+.teleport-three { color: #dfff00; animation: teleport-three 8.2s steps(1, end) -4.3s infinite; }
 
 @keyframes nebula-drift-a { to { transform: translate(13vw, 8vh) scale(1.16) rotate(17deg); opacity: .24; } }
 @keyframes nebula-drift-b { to { transform: translate(-12vw, -9vh) scale(1.12) rotate(-13deg); opacity: .23; } }
-@keyframes ship-flight-one {
-  0% { transform: translate3d(-5vw, 0, 0) rotate(-5deg) scale(.72); opacity: 0; }
-  8%, 88% { opacity: .88; }
-  52% { transform: translate3d(58vw, 8vh, 0) rotate(2deg) scale(1); }
-  100% { transform: translate3d(125vw, -5vh, 0) rotate(-4deg) scale(.78); opacity: 0; }
+@keyframes squadron-fast-cycle { 0%, 31% { opacity: 1; visibility: visible; } 35%, 96% { opacity: 0; visibility: hidden; } 100% { opacity: 1; visibility: visible; } }
+@keyframes squadron-hover-cycle { 0%, 29% { opacity: 0; visibility: hidden; } 34%, 64% { opacity: 1; visibility: visible; } 69%, 100% { opacity: 0; visibility: hidden; } }
+@keyframes squadron-teleport-cycle { 0%, 62% { opacity: 0; visibility: hidden; } 67%, 96% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
+
+@keyframes fast-flight-one {
+  0% { transform: translate3d(0, 0, 0) rotate(-4deg) scale(.72); opacity: 0; }
+  8%, 88% { opacity: 1; }
+  100% { transform: translate3d(128vw, 15vh, 0) rotate(3deg) scale(1); opacity: 0; }
 }
-@keyframes ship-flight-two {
-  0% { transform: translate3d(5vw, 0, 0) scaleX(-1) scale(.62); opacity: 0; }
-  10%, 86% { opacity: .68; }
-  100% { transform: translate3d(-128vw, -15vh, 0) scaleX(-1) scale(.9); opacity: 0; }
+@keyframes fast-flight-two {
+  0% { transform: translate3d(0, 0, 0) scaleX(-1) rotate(-3deg) scale(.78); opacity: 0; }
+  8%, 88% { opacity: 1; }
+  100% { transform: translate3d(-128vw, -20vh, 0) scaleX(-1) rotate(5deg) scale(1); opacity: 0; }
 }
-@keyframes ship-flight-three {
-  0% { transform: translate3d(-5vw, 0, 0) rotate(6deg) scale(.5); opacity: 0; }
-  12%, 84% { opacity: .58; }
-  100% { transform: translate3d(128vw, 18vh, 0) rotate(-6deg) scale(.72); opacity: 0; }
+@keyframes fast-flight-three {
+  0% { transform: translate3d(0, 0, 0) rotate(5deg) scale(.66); opacity: 0; }
+  8%, 88% { opacity: .95; }
+  100% { transform: translate3d(128vw, -28vh, 0) rotate(-4deg) scale(.94); opacity: 0; }
+}
+
+@keyframes sentry-hover-one { to { transform: translate3d(3vw, 2vh, 0) rotate(3deg) scale(1.06); } }
+@keyframes sentry-hover-two { to { transform: translate3d(-3vw, -2vh, 0) scaleX(-1) rotate(-3deg) scale(1.08); } }
+@keyframes sentry-hover-three { to { transform: translate3d(1vw, -3vh, 0) rotate(-2deg) scale(.94); } }
+
+@keyframes teleport-one {
+  0% { left: 8%; top: 15%; opacity: 0; transform: scale(.25); }
+  5%, 24% { left: 8%; top: 15%; opacity: 1; transform: scale(1); }
+  25% { left: 72%; top: 22%; opacity: 0; transform: scale(.2); }
+  30%, 49% { left: 72%; top: 22%; opacity: 1; transform: scale(.9); }
+  50% { left: 34%; top: 65%; opacity: 0; transform: scale(.2); }
+  55%, 74% { left: 34%; top: 65%; opacity: 1; transform: scale(1.08); }
+  75% { left: 58%; top: 42%; opacity: 0; transform: scale(.2); }
+  80%, 100% { left: 58%; top: 42%; opacity: 1; transform: scale(.86); }
+}
+@keyframes teleport-two {
+  0% { right: 10%; top: 64%; opacity: 1; transform: scaleX(-1) scale(.9); }
+  20% { right: 10%; top: 64%; opacity: 0; transform: scaleX(-1) scale(.2); }
+  25%, 45% { right: 68%; top: 38%; opacity: 1; transform: scaleX(-1) scale(1); }
+  46% { right: 68%; top: 38%; opacity: 0; }
+  52%, 72% { right: 25%; top: 18%; opacity: 1; transform: scaleX(-1) scale(.82); }
+  73% { opacity: 0; }
+  80%, 100% { right: 46%; top: 72%; opacity: 1; transform: scaleX(-1) scale(1.06); }
+}
+@keyframes teleport-three {
+  0%, 18% { left: 44%; top: 12%; opacity: 1; transform: scale(.8); }
+  19% { opacity: 0; }
+  25%, 43% { left: 16%; top: 52%; opacity: 1; transform: scale(1.04); }
+  44% { opacity: 0; }
+  50%, 68% { left: 78%; top: 55%; opacity: 1; transform: scale(.9); }
+  69% { opacity: 0; }
+  76%, 100% { left: 50%; top: 32%; opacity: 1; transform: scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .galaxy-nebula, .galaxy-ship { animation: none !important; }
-  .galaxy-ship { display: none; }
+  /* The fleet is a core requested feature, so reduced-motion slows the ambient
+     layers but never freezes the universe or hides two squadrons. */
+  .galaxy-nebula-a { animation-duration: 58s !important; }
+  .galaxy-nebula-b { animation-duration: 66s !important; }
+  .squadron-fast { animation: squadron-fast-cycle 42s linear infinite !important; }
+  .squadron-hover { animation: squadron-hover-cycle 42s linear infinite !important; }
+  .squadron-teleport { animation: squadron-teleport-cycle 42s linear infinite !important; }
+  .fast-one { animation: fast-flight-one 10s linear infinite !important; }
+  .fast-two { animation: fast-flight-two 12s linear -3s infinite !important; }
+  .fast-three { animation: fast-flight-three 11s linear -6s infinite !important; }
+  .hover-one { animation: sentry-hover-one 6s ease-in-out infinite alternate !important; }
+  .hover-two { animation: sentry-hover-two 7s ease-in-out infinite alternate !important; }
+  .hover-three { animation: sentry-hover-three 6.5s ease-in-out infinite alternate !important; }
+  .teleport-one { animation: teleport-one 12s steps(1, end) infinite !important; }
+  .teleport-two { animation: teleport-two 13s steps(1, end) -3s infinite !important; }
+  .teleport-three { animation: teleport-three 14s steps(1, end) -7s infinite !important; }
 }
 
 /* Small labels become hand-tagged NY marker notes. */

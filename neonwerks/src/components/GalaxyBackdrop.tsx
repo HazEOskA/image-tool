@@ -74,7 +74,7 @@ export default function GalaxyBackdrop() {
 
       for (const star of stars) {
         star.pulse += .008 + star.z * .012;
-        star.y += reduce ? 0 : .008 + star.z * .018;
+        star.y += (reduce ? .003 : .008) + star.z * (reduce ? .006 : .018);
         if (star.y > height + 4) star.y = -4;
         const alpha = .25 + star.z * .52 + Math.sin(star.pulse) * .13;
         const x = star.x + pointer.x * star.z;
@@ -87,8 +87,8 @@ export default function GalaxyBackdrop() {
         ctx.fill();
       }
       ctx.shadowBlur = 0;
-      if (!reduce) drawMeteor(meteorClock);
-      if (!reduce) raf = requestAnimationFrame(render);
+      if (!reduce || meteorClock % 18000 < 2100) drawMeteor(meteorClock);
+      raf = requestAnimationFrame(render);
     };
 
     resize();
@@ -107,9 +107,22 @@ export default function GalaxyBackdrop() {
       <div className="galaxy-nebula galaxy-nebula-a" />
       <div className="galaxy-nebula galaxy-nebula-b" />
       <canvas ref={canvasRef} className="galaxy-stars" />
-      <Ship className="ship-one" />
-      <Ship className="ship-two" />
-      <Ship className="ship-three" />
+      <div className="fleet-status">FLEET_ROTATION // 3×3 // TRACKING_ACTIVE</div>
+      <div className="ship-squadron squadron-fast">
+        <Ship className="fast-one" />
+        <Ship className="fast-two" />
+        <Ship className="fast-three" />
+      </div>
+      <div className="ship-squadron squadron-hover">
+        <Ship className="hover-one" />
+        <Ship className="hover-two" />
+        <Ship className="hover-three" />
+      </div>
+      <div className="ship-squadron squadron-teleport">
+        <Ship className="teleport-one" />
+        <Ship className="teleport-two" />
+        <Ship className="teleport-three" />
+      </div>
       <div className="galaxy-horizon" />
     </div>
   );
