@@ -288,8 +288,8 @@ const en: Copy = {
     },
   },
   neonBot: {
-    aria: 'NEON BOT — interactive guide. Press and drag it to a tool, or tap to open a message.',
-    hint: 'Drag me to a tool · or tap to chat',
+    aria: 'OSA — cyberpunk wasp guide. Press and drag it to a tool, or tap to open a message.',
+    hint: 'Drag OSA to a tool · or tap to connect',
     tourLabel: 'Touring the pipeline…',
     stations: [
       { id: 'visual-generator', name: 'Visual Generator', tip: 'We create the first product look.' },
@@ -506,8 +506,8 @@ const pl: Copy = {
     },
   },
   neonBot: {
-    aria: 'NEON BOT — interaktywny przewodnik. Przeciągnij go do narzędzia albo dotknij, żeby otworzyć wiadomość.',
-    hint: 'Przeciągnij mnie do narzędzia · lub dotknij, by napisać',
+    aria: 'OSA — cyberpunkowy przewodnik. Przeciągnij ją do narzędzia albo dotknij, żeby otworzyć wiadomość.',
+    hint: 'Przeciągnij OSĘ do narzędzia · lub dotknij, by połączyć',
     tourLabel: 'Tour po pipeline…',
     stations: [
       { id: 'visual-generator', name: 'Visual Generator', tip: 'Tworzymy pierwszy wygląd produktu.' },

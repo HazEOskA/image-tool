@@ -78,3 +78,67 @@
     animation: none !important;
   }
 }
+
+/* OSA // CYBER FAMILIAR */
+.cyberwasp-btn {
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.9));
+}
+
+.cyberwasp-btn::after {
+  content: 'OSA_01';
+  position: absolute;
+  left: 50%;
+  top: 94%;
+  transform: translateX(-50%);
+  color: #00e5ea;
+  font: 7px/1 'Share Tech Mono', monospace;
+  letter-spacing: .18em;
+  text-shadow: 0 0 7px #00e5ea;
+  white-space: nowrap;
+}
+
+.cyberwasp-wing-left {
+  transform-origin: 42px 39px;
+  animation: cyberwasp-wing-left .11s ease-in-out infinite alternate;
+}
+
+.cyberwasp-wing-right {
+  transform-origin: 58px 39px;
+  animation: cyberwasp-wing-right .11s ease-in-out infinite alternate;
+}
+
+.cyberwasp-tail {
+  transform-origin: 50px 50px;
+  animation: cyberwasp-tail 1.8s ease-in-out infinite;
+}
+
+.cyberwasp-core {
+  animation: cyberwasp-core .9s ease-in-out infinite alternate;
+}
+
+@keyframes cyberwasp-wing-left {
+  from { transform: rotate(4deg) scaleX(.94); opacity: .58; }
+  to { transform: rotate(-7deg) scaleX(1.04); opacity: .95; }
+}
+
+@keyframes cyberwasp-wing-right {
+  from { transform: rotate(-4deg) scaleX(.94); opacity: .58; }
+  to { transform: rotate(7deg) scaleX(1.04); opacity: .95; }
+}
+
+@keyframes cyberwasp-tail {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg) translateY(1px); }
+}
+
+@keyframes cyberwasp-core {
+  from { opacity: .58; transform: scale(.82); }
+  to { opacity: 1; transform: scale(1.18); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyberwasp-wing-left,
+  .cyberwasp-wing-right,
+  .cyberwasp-tail,
+  .cyberwasp-core { animation: none !important; }
+}

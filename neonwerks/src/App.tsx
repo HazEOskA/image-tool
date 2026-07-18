@@ -9,13 +9,15 @@ import LiveShowcase from './components/showcase/LiveShowcase';
 import Contact from './components/Contact';
 import LaunchCTA from './components/LaunchCTA';
 import NeonBot from './components/NeonBot';
+import GalaxyBackdrop from './components/GalaxyBackdrop';
 import { useLang } from './i18n';
 
 export default function App() {
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative isolate min-h-screen overflow-hidden">
+      <GalaxyBackdrop />
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <HowItWorks />
         <InteractiveDropBuilder />
@@ -26,7 +28,7 @@ export default function App() {
         <Contact />
         <LaunchCTA />
       </main>
-      <Footer />
+      <div className="relative z-10"><Footer /></div>
       <NeonBot />
     </div>
   );

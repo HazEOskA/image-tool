@@ -9,6 +9,7 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { motion, useInView } from 'framer-motion';
 import * as THREE from 'three';
 import { useLang } from '../i18n';
+import WildStyleText from './ui/WildStyleText';
 
 /* ──────────────────────────────────────────────────────────────────────────
    LIVE PROOF — NEURAL CORE.  The exact "AI brain" engine from Bartosz's
@@ -406,10 +407,10 @@ export default function LiveProof() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <span className="mb-2 block font-mono text-label tracking-[0.3em] text-orange">
+          <span className="wild-tag mb-2 block font-mono text-label tracking-[0.3em] text-orange">
             02 / WORKSPACE GRAPH · NEURAL CORE
           </span>
-          <h2 className="font-display text-display-md text-off-white">{t.liveProof.title}</h2>
+          <h2 className="max-w-5xl"><WildStyleText text={t.liveProof.title} size="section" /></h2>
           <p className="mt-2 max-w-2xl font-mono text-sm leading-relaxed text-smoke">{t.liveProof.body}</p>
         </motion.div>
 
@@ -418,7 +419,7 @@ export default function LiveProof() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.2 }}
-          className="relative border border-steel bg-[#050505]"
+          className="wild-panel relative border border-steel bg-[#050505]"
           style={{ height: 'clamp(480px, 70vh, 720px)', touchAction: 'none' }}
           data-testid="brain-canvas"
         >
@@ -428,12 +429,12 @@ export default function LiveProof() {
             </Canvas>
           )}
 
-          <div className="pointer-events-none absolute left-3 top-2 select-none font-mono text-[7px] tracking-widest text-fog/60">
+          <div className="wild-tag pointer-events-none absolute left-3 top-2 select-none font-mono text-[7px] tracking-widest text-fog/60">
             <div>NEURAL.CORE / WebGL · Rapier physics · pipeline-mapped</div>
             <div style={{ color: C_KEY }}>{DEFS.length} SYSTEM NODES · {DEFS.length + FILLER_COUNT} NEURONS · {fps} FPS</div>
           </div>
 
-          <div className="pointer-events-none absolute right-3 top-2 select-none font-mono text-[6px] tracking-widest text-fog/40">
+          <div className="wild-tag pointer-events-none absolute right-3 top-2 select-none font-mono text-[6px] tracking-widest text-fog/40">
             DRAG ROTATE · SCROLL ZOOM
           </div>
 

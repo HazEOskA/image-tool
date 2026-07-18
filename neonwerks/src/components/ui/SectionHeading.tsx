@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import WildStyleText from './WildStyleText';
 
 interface Props {
   eyebrow: string;
@@ -21,8 +22,8 @@ export default function SectionHeading({ eyebrow, title, description, align = 'c
         <span className="h-px w-8 bg-gradient-to-r from-neon-cyan to-neon-purple" />
         <span className="font-mono text-xs uppercase tracking-[0.3em] text-neon-cyan">{eyebrow}</span>
       </div>
-      <h2 className="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl">
-        <span className="text-gradient">{title}</span>
+      <h2 className="max-w-5xl">
+        <WildStyleText text={title} size="section" />
       </h2>
       {description && (
         <p className={`max-w-2xl text-base leading-relaxed text-white/55 ${isCenter ? '' : 'text-left'}`}>

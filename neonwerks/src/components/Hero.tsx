@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLang } from '../i18n';
+import WildStyleText from './ui/WildStyleText';
 
 const container = {
   hidden: {},
@@ -32,11 +33,10 @@ export default function Hero() {
           {t.hero.badge}
         </motion.span>
 
-        <motion.h1 variants={item} className="text-balance text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-7xl">
-          <span className="text-white">{t.hero.titleA}</span>
-          <span className="text-gradient-brand">{t.hero.titleB}</span>
-          <br />
-          <span className="text-white">{t.hero.titleC}</span>
+        <motion.h1 variants={item} className="max-w-6xl text-balance">
+          <WildStyleText text={`${t.hero.titleA} ${t.hero.titleB}`} size="hero" />
+          <span className="block h-2 sm:h-4" aria-hidden />
+          <WildStyleText text={t.hero.titleC} size="hero" />
         </motion.h1>
 
         <motion.p variants={item} className="mt-6 max-w-2xl text-lg leading-relaxed text-white/55">

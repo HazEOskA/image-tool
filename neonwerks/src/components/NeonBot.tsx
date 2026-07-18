@@ -18,7 +18,7 @@ import './NeonBot.css';
  * never triggers React re-renders. Only small visual-state changes do.
  */
 
-const SIZE = 72; // interactive footprint used for clamping (slightly bigger bot)
+const SIZE = 92; // cyber-wasp footprint used for viewport clamping
 const MARGIN = 18;
 const CONTACT_EMAIL = 'osabarca@gmail.com';
 const DRAG_THRESHOLD = 6; // px before a press counts as a drag (vs a tap)
@@ -341,7 +341,7 @@ export default function NeonBot() {
             <div className="flex items-center justify-between">
               <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-neon-cyan">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-neon-pink" />
-                NEON BOT
+                OSA // CYBER FAMILIAR
               </span>
               <button
                 type="button"
@@ -395,7 +395,7 @@ export default function NeonBot() {
 
       <button
         type="button"
-        className="neonbot-btn relative block h-[72px] w-[72px] cursor-grab rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan active:cursor-grabbing"
+        className="neonbot-btn cyberwasp-btn relative block h-[92px] w-[92px] cursor-grab rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan active:cursor-grabbing"
         style={{ touchAction: 'none' }}
         aria-label={t.neonBot.aria}
         onPointerDown={onPointerDown}
@@ -414,44 +414,73 @@ export default function NeonBot() {
         />
 
         <span className={`neonbot-float relative block h-full w-full ${phase === 'drag' ? '[animation-play-state:paused]' : ''}`}>
-          <svg viewBox="0 0 64 76" className="h-full w-full overflow-visible" aria-hidden>
+          <svg viewBox="0 0 100 82" className="h-full w-full overflow-visible" aria-hidden>
             <defs>
-              <linearGradient id="nb-body" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#1b2233" />
-                <stop offset="1" stopColor="#0b0e17" />
+              <linearGradient id="wasp-armor" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#243544" />
+                <stop offset="0.46" stopColor="#080d14" />
+                <stop offset="1" stopColor="#16112d" />
               </linearGradient>
-              <linearGradient id="nb-visor" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#0a1620" />
-                <stop offset="1" stopColor="#04293a" />
+              <linearGradient id="wasp-stripe" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stopColor="#dfff00" />
+                <stop offset="0.55" stopColor="#00e5ea" />
+                <stop offset="1" stopColor="#ff008c" />
               </linearGradient>
+              <linearGradient id="wasp-wing-cyan" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#ffffff" stopOpacity=".7" />
+                <stop offset=".3" stopColor="#00e5ea" stopOpacity=".52" />
+                <stop offset="1" stopColor="#00e5ea" stopOpacity=".04" />
+              </linearGradient>
+              <linearGradient id="wasp-wing-pink" x1="1" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#ffffff" stopOpacity=".65" />
+                <stop offset=".35" stopColor="#ff008c" stopOpacity=".48" />
+                <stop offset="1" stopColor="#ff008c" stopOpacity=".04" />
+              </linearGradient>
+              <filter id="wasp-glow" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="2.2" result="b" />
+                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
             </defs>
 
-            {/* antenna */}
-            <line x1="32" y1="10" x2="32" y2="2" stroke="#5b6680" strokeWidth="1.6" strokeLinecap="round" />
-            <circle className={active ? 'neonbot-blink' : ''} cx="32" cy="3" r="2.6" fill="#ff5ed3" />
-
-            {/* head / body shell */}
-            <rect x="10" y="10" width="44" height="40" rx="18" fill="url(#nb-body)" stroke="#3a455e" strokeWidth="1.4" />
-            {/* side cables / vents */}
-            <path d="M12 26 q-5 4 0 8" fill="none" stroke="#3a455e" strokeWidth="1.4" strokeLinecap="round" />
-            <path d="M52 26 q5 4 0 8" fill="none" stroke="#3a455e" strokeWidth="1.4" strokeLinecap="round" />
-
-            {/* visor */}
-            <rect x="17" y="18" width="30" height="22" rx="11" fill="url(#nb-visor)" stroke={active ? '#34e2ff' : '#1f3540'} strokeWidth="1.4" />
-            {/* scan line */}
-            <rect className={active ? 'neonbot-scan' : ''} x="20" y="28" width="24" height="1.6" rx="1" fill="#34e2ff" opacity="0.5" />
-            {/* eyes */}
-            <circle cx="26" cy="29" r="3.4" fill={eye} style={{ filter: active ? 'drop-shadow(0 0 4px #34e2ff)' : 'none' }} />
-            <circle cx="38" cy="29" r="3.4" fill={eye} style={{ filter: active ? 'drop-shadow(0 0 4px #34e2ff)' : 'none' }} />
-
-            {/* chest light */}
-            <circle cx="32" cy="46" r="2.2" fill={active ? '#9b6bff' : '#2b3350'} />
-
-            {/* thruster */}
-            <g className={active ? 'neonbot-thruster' : ''} style={{ opacity: active ? 1 : 0.4 }}>
-              <path d="M24 52 q8 18 16 0 q-8 8 -16 0 z" fill="#34e2ff" opacity="0.85" />
-              <path d="M28 52 q4 11 8 0 q-4 5 -8 0 z" fill="#ffffff" opacity="0.9" />
+            {/* four articulated holographic wings */}
+            <g className="cyberwasp-wing cyberwasp-wing-left">
+              <path d="M42 34C27 9 8 7 4 17c-3 10 21 21 38 24Z" fill="url(#wasp-wing-cyan)" stroke="#00e5ea" strokeWidth="1" />
+              <path d="M42 40C23 35 7 40 10 51c3 9 24 1 36-7Z" fill="url(#wasp-wing-cyan)" stroke="#00e5ea" strokeWidth=".8" />
+              <path d="M14 18 34 34M14 47l24-5" stroke="#fff" strokeOpacity=".38" strokeWidth=".6" />
             </g>
+            <g className="cyberwasp-wing cyberwasp-wing-right">
+              <path d="M58 34C73 9 92 7 96 17c3 10-21 21-38 24Z" fill="url(#wasp-wing-pink)" stroke="#ff008c" strokeWidth="1" />
+              <path d="M58 40c19-5 35 0 32 11-3 9-24 1-36-7Z" fill="url(#wasp-wing-pink)" stroke="#ff008c" strokeWidth=".8" />
+              <path d="m86 18-20 16m20 13-24-5" stroke="#fff" strokeOpacity=".34" strokeWidth=".6" />
+            </g>
+
+            {/* six mechanical legs */}
+            <g className="cyberwasp-legs" fill="none" stroke="#65798a" strokeWidth="1.5" strokeLinecap="square">
+              <path d="m39 42-15 8-7 11m23-14-12 12-1 12m18-21-7 14 3 8" />
+              <path d="m61 42 15 8 7 11M60 47l12 12 1 12M55 50l7 14-3 8" />
+              <path d="M14 61h7m3 10h7m10 11h6M86 61h-7m-3 10h-7m-10 11h-6" stroke="url(#wasp-stripe)" />
+            </g>
+
+            {/* abdomen + stinger */}
+            <g className="cyberwasp-tail">
+              <path d="M39 49c1 18 7 27 11 27s10-9 11-27Z" fill="url(#wasp-armor)" stroke="#506475" strokeWidth="1.2" />
+              <path d="M41 55h18M43 62h14M46 69h8" stroke="url(#wasp-stripe)" strokeWidth="3" />
+              <path d="m47 75 3 7 3-7" fill="#ff008c" filter="url(#wasp-glow)" />
+            </g>
+
+            {/* armored thorax */}
+            <path d="m35 29 9-8h12l9 8-2 22-13 8-13-8Z" fill="url(#wasp-armor)" stroke="#00e5ea" strokeWidth="1.2" />
+            <path d="m40 33 10-6 10 6-2 14-8 6-8-6Z" fill="#050a10" stroke="#263d4d" />
+            <circle className="cyberwasp-core" cx="50" cy="40" r="4" fill={active ? '#dfff00' : '#00e5ea'} filter="url(#wasp-glow)" />
+            <path d="M45 40h10M50 35v10" stroke="#fff" strokeWidth=".75" opacity=".72" />
+
+            {/* head, antennae and visor eyes */}
+            <path d="m38 16 7-8h10l7 8-4 12H42Z" fill="url(#wasp-armor)" stroke="#ff008c" strokeWidth="1.1" />
+            <path d="M44 10 35 2m21 8 9-8" stroke="#65798a" strokeWidth="1.2" />
+            <circle className={active ? 'neonbot-blink' : ''} cx="34" cy="2" r="1.8" fill="#00e5ea" />
+            <circle className={active ? 'neonbot-blink' : ''} cx="66" cy="2" r="1.8" fill="#ff008c" />
+            <path d="m42 17 6 2-6 3Zm16 0-6 2 6 3Z" fill={eye} filter="url(#wasp-glow)" />
+            <path className={active ? 'neonbot-scan' : ''} d="M42 24h16" stroke="#00e5ea" strokeWidth="1" opacity=".55" />
           </svg>
         </span>
       </button>
